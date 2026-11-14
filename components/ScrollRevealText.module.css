@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.line {
+  display: block;
+  font-size: var(--reveal-font-size);
+  font-family: var(--reveal-font-family);
+  line-height: 1;
+  margin-bottom: var(--reveal-line-gap);
+
+  background: linear-gradient(
+    to right,
+    var(--reveal-color) 50%,
+    var(--reveal-hidden) 50%
+  );
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

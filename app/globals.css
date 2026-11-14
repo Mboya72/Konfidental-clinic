@@ -3,24 +3,1208 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Norris Animation */
+  --norris-primary: #ffffff;
+  --norris-secondary: #99CCCC;
+
+  --norris-unit: 10ms;
+  --norris-time: calc(var(--norris-unit) * 3);
+  --norris-delay: calc(var(--norris-unit) * 2);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-gc-north);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-gc-north), sans-serif;
+}
+
+/* ========================================
+   NORRIS TEXT ANIMATION
+======================================== */
+
+.nav-norris .norris-char-inner::before,
+.nav-norris .norris-char-inner::after {
+  color: #171717;
+}
+
+.nav-norris .norris-char-inner::after {
+  color: #99cccc;
+}
+
+.nav-norris:hover .norris-char-inner::before {
+  transform: translateY(-110%);
+}
+
+.nav-norris:hover .norris-char-inner::after {
+  transform: translateY(0);
+}
+
+/* Dark version - Scroll down only */
+.norris-dark .norris-char-inner::before {
+  color: #171717;
+}
+
+.norris-dark .norris-char-inner::after {
+  color: #171717;
+}
+
+.norris-text {
+  display: inline-flex;
+  overflow: hidden;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.norris-char {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.2;
+}
+
+.norris-char-inner {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  white-space: pre;
+}
+
+.norris-char-inner::before,
+.norris-char-inner::after {
+  content: attr(data-char);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #171717;
+  color: var(--norris-primary);
+
+  transition:
+    transform ease-out calc(var(--norris-time) * 10),
+    color 300ms ease;
+
+  transition-delay: calc(var(--char-index) * var(--norris-delay));
+}
+
+.norris-char-inner::before {
+  transform: translateY(0);
+}
+
+.norris-char-inner::after {
+  transform: translateY(250%);
+}
+
+/* ========================================
+   SHARED NORRIS HOVER EFFECT
+======================================== */
+
+.appointment-cta:hover .norris-char-inner::before,
+.scroll-trigger:hover .norris-char-inner::before {
+  transform: translateY(-100%);
+}
+
+.appointment-cta:hover .norris-char-inner::after,
+.scroll-trigger:hover .norris-char-inner::after {
+  transform: translateY(0);
+}
+
+.appointment-cta:hover .norris-char-inner::before,
+.appointment-cta:hover .norris-char-inner::after,
+.scroll-trigger:hover .norris-char-inner::before,
+.scroll-trigger:hover .norris-char-inner::after {
+  color: var(--norris-secondary);
+}
+
+/* ========================================
+   APPOINTMENT BUTTON (legacy — kept for safety)
+======================================== */
+
+.appointment-link,
+.appointment-icon {
+  transition:
+    background-color 300ms ease,
+    transform 300ms ease;
+}
+
+.appointment-cta:hover .appointment-link,
+.appointment-cta:hover .appointment-icon {
+  background-color: #252525;
+}
+
+.appointment-smile {
+  transition:
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 300ms ease;
+}
+
+.appointment-cta:hover .appointment-smile {
+  transform: rotate(-12deg) scale(1.1);
+  color: var(--norris-secondary);
+}
+
+/* ========================================
+   SCROLL INDICATOR
+======================================== */
+
+.scroll-trigger {
+  cursor: pointer;
+}
+
+#mouse-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.mouse {
+  height: 35px;
+  width: 22px;
+  border: 1.5px solid #171717;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.mouse-in {
+  height: 6px;
+  width: 3px;
+  border-radius: 3px;
+  background: #171717;
+  animation: mouse-scroll 1.5s infinite;
+}
+
+.down-arrow-1,
+.down-arrow-2,
+.down-arrow-3 {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid #171717;
+  border-bottom: 1.5px solid #171717;
+  transform: rotate(45deg);
+  animation: arrow-scroll 1.5s infinite;
+}
+
+.down-arrow-2 {
+  animation-delay: 0.2s;
+}
+
+.down-arrow-3 {
+  animation-delay: 0.4s;
+}
+
+/* ========================================
+   SCROLL ANIMATIONS
+======================================== */
+
+@keyframes mouse-scroll {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes arrow-scroll {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-3px, -3px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(3px, 3px);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .norris-char-inner::before,
+  .norris-char-inner::after,
+  .appointment-smile,
+  .mouse-in,
+  .down-arrow-1,
+  .down-arrow-2,
+  .down-arrow-3 {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ========================================
+   OUR SERVICES — CAROUSEL
+======================================== */
+
+.services-layout {
+  min-height: 100%;
+}
+
+.services-heading h2 {
+  font-family: inherit;
+}
+
+.services-list {
+  perspective: 1000px;
+}
+
+.service-name {
+  will-change: transform, opacity;
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1s ease;
+}
+
+@media (max-width: 767px) {
+  .services-layout {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+  }
+  .services-heading {
+    justify-content: center;
+  }
+  .services-divider {
+    width: 100%;
+    flex: none;
+  }
+  .services-list {
+    width: 100%;
+    max-width: 350px;
+    height: 300px;
+  }
+  .service-name {
+    text-align: center;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-name {
+    transition: none;
+  }
+}
+
+/* ========================================
+   ANIMATED TEXT — SCROLL REVEAL
+======================================== */
+
+.animated-text-section {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  padding: 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-text-container {
+  width: 100%;
+  min-height: calc(100svh - 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.animated-text-content {
+  width: 60%;
+}
+
+.animated-text-content p {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.animated-word {
+  display: inline-block;
+  position: relative;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 2rem;
+  opacity: 0;
+  will-change: background-color, opacity;
+}
+
+.animated-word-text {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+}
+
+.animated-keyword-wrapper {
+  margin-left: 0.2rem;
+  margin-right: 0.4rem;
+}
+
+.animated-keyword {
+  position: relative;
+  z-index: 1;
+  color: #171717;
+}
+
+.animated-keyword::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 1rem);
+  height: calc(100% + 0.4rem);
+  background-color: #99cccc;
+  border-radius: 2rem;
+  z-index: -1;
+}
+
+.animated-keyword.vibrant::before,
+.animated-keyword.shape::before,
+.animated-keyword.interactive::before {
+  background-color: #99cccc;
+}
+
+.animated-keyword.living::before,
+.animated-keyword.expression::before,
+.animated-keyword.storytelling::before {
+  background-color: #c6e6e6;
+}
+
+.animated-keyword.clarity::before,
+.animated-keyword.intuitive::before,
+.animated-keyword.vision::before {
+  background-color: #ffffff;
+}
+
+@media (max-width: 1000px) {
+  .animated-text-content {
+    width: 90%;
+  }
+  .animated-text-content p {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  .animated-word {
+    margin-right: 0.1rem;
+    margin-bottom: 0.15rem;
+  }
+  .animated-keyword-wrapper {
+    margin-left: 0.1rem;
+    margin-right: 0.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .animated-text-section {
+    padding: 1rem;
+  }
+  .animated-text-content {
+    width: 100%;
+  }
+  .animated-text-content p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-word,
+  .animated-word-text {
+    opacity: 1;
+    will-change: auto;
+  }
+}
+
+/* ========================================
+   ABOUT — ANIMATED TEXT
+======================================== */
+
+.anime-text-container {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.anime-text-container .copy-container {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.anime-text {
+  width: 100%;
+}
+
+.anime-text p {
+  margin: 0 0 1.5rem;
+  color: #171717;
+  text-align: left;
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.anime-text .word {
+  position: relative;
+  display: inline-block;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.5rem;
+  isolation: isolate;
+  will-change: opacity, background-color;
+}
+
+.anime-text .word.keyword-wrapper {
+  margin-left: 0.2rem;
+  margin-right: 0.4rem;
+}
+
+.anime-text .word span {
+  position: relative;
+  z-index: 1;
+}
+
+.anime-text .word span.keyword {
+  display: inline-block;
+  color: #075874;
+  font-weight: 600;
+}
+
+.anime-text .word span.keyword::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 0.8rem);
+  height: calc(100% + 0.4rem);
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  background-color: #dceef2;
+}
+
+.anime-text .word span.keyword.smiles::before,
+.anime-text .word span.keyword.family::before,
+.anime-text .word span.keyword.preventive::before {
+  background-color: #dceef2;
+}
+
+.anime-text .word span.keyword.personalised::before,
+.anime-text .word span.keyword.comfort::before,
+.anime-text .word span.keyword.care::before {
+  background-color: #e7f2f5;
+}
+
+.anime-text .word span.keyword.exceptional::before,
+.anime-text .word span.keyword.confidence::before,
+.anime-text .word span.keyword.health::before {
+  background-color: #edf3f4;
+}
+
+@media (max-width: 1000px) {
+  .anime-text-container,
+  .anime-text-container .copy-container {
+    min-height: 100svh;
+  }
+  .anime-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .anime-text .word {
+    margin-right: 0.1rem;
+    margin-bottom: 0.15rem;
+    padding: 0.1rem 0.15rem;
+  }
+  .anime-text .word.keyword-wrapper {
+    margin-left: 0.1rem;
+    margin-right: 0.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .anime-text-container,
+  .anime-text-container .copy-container {
+    min-height: 100svh;
+  }
+  .anime-text-container {
+    padding: 1.5rem 0;
+  }
+  .anime-text p {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* ========================================
+   SCROLL DELAY
+======================================== */
+
+.scroll-delay {
+  height: 150vh;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* ========================================
+   HERO ZOOM
+======================================== */
+
+.hero-zoom {
+  width: 100%;
+  height: 100vh;
+}
+
+/* ========================================
+   PARALLAX STACK (Curtain Reveal)
+======================================== */
+
+.parallax-stack {
+  position: relative;
+  width: 100%;
+}
+
+.parallax-panel {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.parallax-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panel-hero { z-index: 1; background-color: #171717; }
+.panel-about { z-index: 10; background-color: #ffffff; }
+.panel-services { z-index: 20; background-color: #075874; }
+.panel-testimonials { z-index: 30; background-color: #ffffff; }
+.panel-map { z-index: 40; background-color: #f0f2f5; }
+
+/* ---- Services spotlight ---- */
+.services-layout {
+  --pin-top: 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(3rem, 5vw, 6rem);
+  align-items: start;
+}
+
+.services-headline {
+  position: sticky;
+  top: calc(var(--pin-top) + 2vh);
+}
+
+.services-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.services-card {
+  position: sticky;
+  top: var(--pin-top);
+  transform-origin: center top;
+  height: clamp(220px, 34svh, 340px);
+  background-color: var(--base-100, #eeece8);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  color: var(--base-300, #041d2c);
+}
+
+.services-card-face {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1.75rem;
+}
+
+.services-card-kicker {
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+.services-card-title {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.5rem;
+}
+
+.services-card-desc {
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  font-weight: 500;
+  margin-top: 0.75rem;
+  max-width: 22em;
+  opacity: 0.75;
+}
+
+.services-card:last-child {
+  background-color: #3b5bdb;
+  border-color: #3b5bdb;
+  color: #eeece8;
+}
+.services-card:last-child .services-card-face { opacity: 1; }
+
+.services-card-arrow {
+  align-self: flex-end;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #eeece8;
+  color: #3b5bdb;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .services-layout {
+    --pin-top: 5rem;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+  .services-headline {
+    position: relative;
+    top: auto;
+    order: -1;
+  }
+  .services-card {
+    height: 200px;
+  }
+}
+
+/* ========================================
+   LIQUID GLASS BUTTON
+======================================== */
+
+@property --angle-1 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: -75deg;
+}
+
+@property --angle-2 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: -45deg;
+}
+
+.liquid-btn-wrap {
+  --border-width: clamp(1px, 0.0625em, 4px);
+  --anim--hover-time: 400ms;
+  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+  position: relative;
+  z-index: 2;
+  border-radius: 999vw;
+  background: transparent;
+  pointer-events: none;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.liquid-btn-shadow {
+  --shadow-cuttoff-fix: 2em;
+  position: absolute;
+  width: calc(100% + var(--shadow-cuttoff-fix));
+  height: calc(100% + var(--shadow-cuttoff-fix));
+  top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  filter: blur(clamp(2px, 0.125em, 12px));
+  overflow: visible;
+  pointer-events: none;
+}
+
+.liquid-btn-shadow::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 999vw;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
+  width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+  height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+  top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+  left: calc(var(--shadow-cuttoff-fix) - 0.875em);
+  padding: 0.125em;
+  box-sizing: border-box;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  overflow: visible;
+  opacity: 1;
+}
+
+.liquid-btn {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  pointer-events: auto;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.06)
+  );
+
+  border-radius: 999vw;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 8px 24px -8px rgba(0, 0, 0, 0.35),
+    0 2px 6px -2px rgba(0, 0, 0, 0.15);
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.liquid-btn:hover {
+  transform: scale(0.975);
+  backdrop-filter: blur(0.01em);
+  -webkit-backdrop-filter: blur(0.01em);
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+    0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
+    0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5),
+    0 0 0 0 rgba(255, 255, 255, 1);
+}
+
+/* -------- BUTTON LABEL -------- */
+
+.liquid-btn > span {
+  position: relative;
+  display: block;
+  user-select: none;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: 1em;
+
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+  transition:
+    color 400ms var(--anim--hover-ease),
+    text-shadow 400ms var(--anim--hover-ease);
+
+  padding-inline: 1.5em;
+  padding-block: 0.875em;
+}
+
+.liquid-btn:hover > span {
+  text-shadow: 0.025em 0.025em 0.025em rgba(0, 0, 0, 0.12);
+}
+
+/* -------- KILL NORRIS OVERRIDES INSIDE LIQUID BTN -------- */
+
+.liquid-btn .norris-char-inner::before,
+.liquid-btn .norris-char-inner::after {
+  color: inherit !important;
+  transform: none !important;
+  transition: color 400ms var(--anim--hover-ease) !important;
+}
+
+.liquid-btn:hover .norris-char-inner::before,
+.liquid-btn:hover .norris-char-inner::after,
+.liquid-btn:active .norris-char-inner::before,
+.liquid-btn:active .norris-char-inner::after {
+  color: inherit !important;
+  transform: none !important;
+}
+
+.liquid-btn .norris-char-inner {
+  color: inherit;
+}
+
+/* -------- SECTION-DRIVEN COLOR SWAP (must come AFTER Norris rules) -------- */
+
+[data-cta-active="dark"] .liquid-btn > span {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+[data-cta-active="dark"] .liquid-btn .norris-char-inner::before,
+[data-cta-active="dark"] .liquid-btn .norris-char-inner::after {
+  color: #ffffff !important;
+}
+
+[data-cta-active="light"] .liquid-btn > span {
+  color: #171717;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+[data-cta-active="light"] .liquid-btn .norris-char-inner::before,
+[data-cta-active="light"] .liquid-btn .norris-char-inner::after {
+  color: #171717 !important;
+}
+
+/* -------- SHEEN SWEEP -------- */
+
+.liquid-btn > span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% - var(--border-width));
+  height: calc(100% - var(--border-width));
+  top: calc(0% + var(--border-width) / 2);
+  left: calc(0% + var(--border-width) / 2);
+  box-sizing: border-box;
+  border-radius: 999vw;
+  overflow: clip;
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 40% 50%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  z-index: 3;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  transition:
+    background-position calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease),
+    --angle-2 calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
+}
+
+.liquid-btn:hover > span::after {
+  background-position: 25% 50%;
+}
+
+.liquid-btn:active > span::after {
+  background-position: 50% 15%;
+  --angle-2: -15deg;
+}
+
+/* -------- RIM -------- */
+
+.liquid-btn::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: 999vw;
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+  top: calc(0% - var(--border-width) / 2);
+  left: calc(0% - var(--border-width) / 2);
+  padding: var(--border-width);
+  box-sizing: border-box;
+
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0) 8% 35%,
+      rgba(255, 255, 255, 0.95) 50%,
+      rgba(255, 255, 255, 0) 65% 92%,
+      rgba(255, 255, 255, 0.9)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.15));
+
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  transition:
+    all var(--anim--hover-time) var(--anim--hover-ease),
+    --angle-1 500ms ease;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.4);
+}
+
+.liquid-btn:hover::after {
+  --angle-1: -125deg;
+}
+
+.liquid-btn:active::after {
+  --angle-1: -75deg;
+}
+
+.liquid-btn-wrap:has(.liquid-btn:hover) .liquid-btn-shadow {
+  filter: blur(clamp(2px, 0.0625em, 6px));
+}
+
+.liquid-btn-wrap:has(.liquid-btn:hover) .liquid-btn-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.875em);
+  opacity: 1;
+}
+
+.liquid-btn-wrap:has(.liquid-btn:active) {
+  transform: rotate3d(1, 0, 0, 25deg);
+}
+
+.liquid-btn-wrap:has(.liquid-btn:active) .liquid-btn {
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+    0 0.125em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+    0 0.225em 0.05em 0 rgba(0, 0, 0, 0.05),
+    0 0.25em 0 0 rgba(255, 255, 255, 0.75),
+    inset 0 0.25em 0.05em 0 rgba(0, 0, 0, 0.15);
+}
+
+.liquid-btn-wrap:has(.liquid-btn:active) > .liquid-btn-shadow {
+  filter: blur(clamp(2px, 0.125em, 12px));
+}
+
+.liquid-btn-wrap:has(.liquid-btn:active) > .liquid-btn-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+  opacity: 0.75;
+}
+
+/* Fallback for browsers without @property (Safari/Firefox) */
+@supports not (background: paint(x)) {
+  .liquid-btn::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  }
+  .liquid-btn:hover::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  }
+}
+
+/* ========================================
+   ADAPTIVE NAVBAR (reads data-nav-active)
+======================================== */
+
+.site-nav {
+  transition:
+    color 400ms var(--anim--hover-ease, 400ms ease),
+    background-color 400ms var(--anim--hover-ease, 400ms ease);
+}
+
+/* Brand text color */
+.site-brand {
+  color: #171717;
+  transition: color 400ms var(--anim--hover-ease, 400ms ease);
+}
+
+[data-nav-active="dark"] .site-brand {
+  color: #ffffff;
+}
+
+[data-nav-active="light"] .site-brand {
+  color: #171717;
+}
+
+/* Nav link colors — override Norris pseudo-element colors per theme */
+[data-nav-active="dark"] .nav-norris .norris-char-inner::before,
+[data-nav-active="dark"] .nav-norris .norris-char-inner::after {
+  color: #ffffff;
+}
+
+[data-nav-active="dark"] .nav-norris:hover .norris-char-inner::after {
+  color: var(--norris-secondary);
+}
+
+[data-nav-active="light"] .nav-norris .norris-char-inner::before,
+[data-nav-active="light"] .nav-norris .norris-char-inner::after {
+  color: #171717;
+}
+
+[data-nav-active="light"] .nav-norris:hover .norris-char-inner::after {
+  color: var(--norris-secondary);
+}
+
+/* ========================================
+   NORRIS INSIDE LIQUID BUTTON — FIX
+   ======================================== */
+
+/* 1) Kill Norris's own transform behavior inside the liquid button. */
+.liquid-btn .norris-char-inner::before,
+.liquid-btn .norris-char-inner::after {
+  transform: none !important;
+  transition: color 400ms var(--anim--hover-ease, 400ms ease) !important;
+}
+
+/* 2) Make the pseudo-elements inherit the span's color (CTA theme). */
+[data-cta-active="dark"] .liquid-btn .norris-char-inner::before,
+[data-cta-active="dark"] .liquid-btn .norris-char-inner::after {
+  color: #ffffff !important;
+}
+
+[data-cta-active="light"] .liquid-btn .norris-char-inner::before,
+[data-cta-active="light"] .liquid-btn .norris-char-inner::after {
+  color: #171717 !important;
+}
+
+/* 3) Hide the "after" layer entirely — no char-slide inside the button. */
+.liquid-btn .norris-char-inner::after {
+  opacity: 0 !important;
+}
+
+/* 4) Disable the hover-slide on the parent. */
+.liquid-btn:hover .norris-char-inner::before,
+.liquid-btn:hover .norris-char-inner::after {
+  transform: none !important;
+}
+
+/* ========================================
+   HERO IMAGE THEME SWAP
+======================================== */
+
+.hero-img-for-light,
+.hero-img-for-dark {
+  transition: opacity 400ms ease;
+}
+
+[data-nav-active="light"] .hero-img-for-light { opacity: 1; }
+[data-nav-active="light"] .hero-img-for-dark  { opacity: 0; }
+
+[data-nav-active="dark"] .hero-img-for-light { opacity: 0; }
+[data-nav-active="dark"] .hero-img-for-dark  { opacity: 1; }
+
+/* ========================================
+   LIQUID BUTTON — ICON VARIANT
+======================================== */
+
+.liquid-btn.liquid-btn--icon {
+  aspect-ratio: 1 / 1;
+  border-radius: 999vw;
+}
+
+/* Override the default padding on the span for a square icon button */
+.liquid-btn--icon > span {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  color: #ffffff;    /* default; theme overrides below */
+}
+
+.liquid-btn--icon .liquid-btn-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: currentColor;
+  transition:
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Wobble on hover */
+.liquid-btn-wrap:hover .liquid-btn-icon {
+  transform: rotate(-12deg) scale(1.1);
+}
+
+/* Theme color — inherit via currentColor */
+[data-cta-active="dark"] .liquid-btn--icon > span {
+  color: #ffffff;
+}
+
+[data-cta-active="light"] .liquid-btn--icon > span {
+  color: #171717;
+}
+
+/* ========================================
+   MAP PIN MARKER
+======================================== */
+
+.custom-map-pin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* The actual Pin SVG */
+.custom-map-pin__svg {
+  width: 40px;
+  height: 40px;
+  /* Add a subtle drop shadow to the pin */
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
+  /* Add a hover effect */
+  transition: transform 0.2s ease;
+}
+
+.custom-map-pin:hover .custom-map-pin__svg {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* The shadow "dot" on the map floor */
+.custom-map-pin__shadow {
+  position: absolute;
+  bottom: 0;
+  width: 14px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  /* Blur it so it looks like a soft shadow */
+  filter: blur(2px);
+  transform: translateY(3px);
+}
+
+/* Add to globals.css */
+dialog.booking-drawer {
+  margin: 0 auto !important;
+  top: auto !important;
+  bottom: 0 !important;
+  max-height: 90vh;
+  overflow: visible !important; /* This prevents the X button from being cut off */
+}
+
+dialog.booking-drawer::backdrop {
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 767px) {
+  .panel-about {
+    height: auto !important;
+    min-height: 125dvh;
+    overflow: visible !important;
+  }
 }
