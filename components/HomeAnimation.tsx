@@ -235,7 +235,7 @@ export default function HomeAnimation() {
                   <br />
                   Smile
                 </h2>
-                <div className="absolute bottom-[0.5%] right-[6%] flex w-auto items-center pt-6 text-[10px] font-semibold uppercase md:bottom-[12%] md:w-[15%] md:max-w-[25dvw] md:text-xs">
+                <div className="absolute bottom-[80%] right-[6%] flex w-auto items-center pt-6 text-[10px] font-semibold uppercase md:bottom-[12%] md:w-[15%] md:max-w-[25dvw] md:text-xs">
                   <div className="scroll-trigger pointer-events-auto flex flex-col items-center gap-2">
                     <a href="#about" aria-label="Scroll to explore">
                       <div id="mouse-scroll">
