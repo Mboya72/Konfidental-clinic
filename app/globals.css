@@ -1229,3 +1229,21 @@ dialog.booking-drawer::backdrop {
     height: auto !important;
   }
 }
+
+@media (max-width: 767px) {
+  .panel-about,
+  .panel-testimonials,
+  .panel-map {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;   /* ← add this */
+  }
+  .panel-about .parallax-inner,
+  .panel-testimonials .parallax-inner,
+  .panel-map .parallax-inner {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    overflow: visible !important;   /* ← add this */
+  }
+}

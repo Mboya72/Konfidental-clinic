@@ -728,170 +728,170 @@ export default function HomeAnimation() {
 </section>
 
         {/* Section 06 — Map */}
-        <section
-          data-cta-theme="light"
-          className="parallax-panel panel-map bg-[#f8f9fa]"
-        >
-          <div className="parallax-inner px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24 lg:px-20">
-            <div className="mx-auto flex w-full max-w-[1300px] flex-col items-center justify-center gap-10 lg:flex-row lg:gap-20">
-              {/* Left Side - Text Content */}
-              <div className="flex w-full flex-col justify-center lg:w-[45%]">
-                {/* Eyebrow */}
-                <ScrollWipeText
-                  className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#075874]"
-                  text="Visit Us"
-                  revealColor="#075874"
-                  hiddenColor="rgba(7,88,116,0.15)"
-                  stagger={0}
-                  start="top 85%"
-                  end="bottom 60%"
-                />
+<section
+  data-cta-theme="light"
+  className="parallax-panel panel-map relative md:sticky h-auto min-h-[100svh] md:min-h-[100svh] overflow-visible bg-[#f8f9fa]"
+>
+  <div className="parallax-inner px-4 py-10 sm:px-6 sm:py-16 md:px-12 md:py-20 lg:px-20">
+    <div className="mx-auto flex w-full max-w-[1300px] flex-col items-center justify-center gap-8 lg:flex-row lg:gap-20">
+      {/* ─── Right Side - Map (shows FIRST on mobile) ─── */}
+      <div className="order-1 w-full lg:order-2 lg:w-[55%]">
+        <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[#171717]/10 shadow-xl sm:aspect-[16/10] md:h-[550px] md:aspect-auto lg:h-[650px]">
+          <MapSection />
+        </div>
+      </div>
 
-                {/* Headline - Inline the teal period */}
-                <div className="inline-flex items-end">
-                  <ScrollWipeText
-                    className="text-4xl font-bold leading-[0.95] tracking-tight text-[#171717] sm:text-5xl md:text-7xl lg:text-[5.5rem]"
-                    lines={["Our", "Location"]}
-                    revealColor="#171717"
-                    hiddenColor="#e5e5e5"
-                    stagger={0.15}
-                    start="top 85%"
-                    end="bottom 50%"
-                    text={undefined}
-                  />
-                  <span className="text-4xl font-bold leading-[0.95] tracking-tight text-[#075874] sm:text-5xl md:text-7xl lg:text-[5.5rem]">
-                    .
-                  </span>
-                </div>
+      {/* ─── Left Side - Text Content (shows SECOND on mobile) ─── */}
+      <div className="order-2 flex w-full flex-col justify-center lg:order-1 lg:w-[45%]">
+        {/* Eyebrow */}
+        <ScrollWipeText
+          className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075874] sm:mb-4"
+          text="Visit Us"
+          revealColor="#075874"
+          hiddenColor="rgba(7,88,116,0.15)"
+          stagger={0}
+          start="top 85%"
+          end="bottom 60%"
+        />
 
-                {/* Paragraph */}
-                <ScrollWipeText
-                  className="mt-6 max-w-md text-base leading-relaxed text-[#171717]/60 sm:mt-8 md:text-lg"
-                  text="Visit our state-of-the-art clinic in the heart of Westlands. We are easily accessible, with ample parking and a welcoming environment designed to put you at ease from the moment you arrive."
-                  revealColor="#171717"
-                  hiddenColor="#e5e5e5"
-                  stagger={0}
-                  start="top 88%"
-                  end="bottom 65%"
-                />
+        {/* Headline - Inline the teal period */}
+        <div className="inline-flex items-end">
+          <ScrollWipeText
+            className="text-4xl font-bold leading-[0.95] tracking-tight text-[#171717] sm:text-5xl md:text-7xl lg:text-[5.5rem]"
+            lines={["Our", "Location"]}
+            revealColor="#171717"
+            hiddenColor="#e5e5e5"
+            stagger={0.15}
+            start="top 85%"
+            end="bottom 50%"
+            text={undefined}
+          />
+          <span className="text-4xl font-bold leading-[0.95] tracking-tight text-[#075874] sm:text-5xl md:text-7xl lg:text-[5.5rem]">
+            .
+          </span>
+        </div>
 
-                {/* Contact Details List */}
-                <div className="mt-8 flex flex-col gap-6 sm:mt-10">
-                  {/* Address Item */}
-                  <div className="flex items-start gap-4 text-[#171717]/80">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-[#171717]/5 text-[#075874]">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
-                        <circle cx="12" cy="10" r="2.5" />
-                      </svg>
-                    </div>
-                    <div className="pt-1">
-                      <ScrollWipeText
-                        className="text-sm font-semibold text-[#171717]"
-                        text="Clinic Address"
-                        revealColor="#171717"
-                        hiddenColor="#dcdcdc"
-                        stagger={0}
-                        start="top 90%"
-                        end="bottom 75%"
-                      />
-                      <ScrollWipeText
-                        className="mt-1 text-sm text-[#171717]/60"
-                        text="The Place @ 67, General Mathenge Dr, Westlands"
-                        revealColor="#171717"
-                        hiddenColor="#e5e5e5"
-                        stagger={0}
-                        start="top 90%"
-                        end="bottom 70%"
-                      />
-                    </div>
-                  </div>
+        {/* Paragraph */}
+        <ScrollWipeText
+          className="mt-5 max-w-md text-base leading-relaxed text-[#171717]/60 sm:mt-8 md:text-lg"
+          text="Visit our state-of-the-art clinic in the heart of Westlands. We are easily accessible, with ample parking and a welcoming environment designed to put you at ease from the moment you arrive."
+          revealColor="#171717"
+          hiddenColor="#e5e5e5"
+          stagger={0}
+          start="top 88%"
+          end="bottom 65%"
+        />
 
-                  {/* Hours Item */}
-                  <div className="flex items-start gap-4 text-[#171717]/80">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-[#171717]/5 text-[#075874]">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 7v5l3 2" />
-                      </svg>
-                    </div>
-                    <div className="pt-1">
-                      <ScrollWipeText
-                        className="text-sm font-semibold text-[#171717]"
-                        text="Opening Hours"
-                        revealColor="#171717"
-                        hiddenColor="#dcdcdc"
-                        stagger={0}
-                        start="top 90%"
-                        end="bottom 75%"
-                      />
-                      <ScrollWipeText
-                        className="mt-1 text-sm text-[#171717]/60"
-                        text="Mon–Fri · 8:00 AM – 6:00 PM"
-                        revealColor="#171717"
-                        hiddenColor="#e5e5e5"
-                        stagger={0}
-                        start="top 90%"
-                        end="bottom 70%"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Google Maps Directions Button */}
-                <div className="mt-8 sm:mt-10">
-                  <a
-                    href="https://www.google.com/maps/dir/Nairobi+Cbd,+Nairobi/Dentists+At+The+Place,+The+Place+@+67,+General+Mathenge+Drive,+Nairobi/@-1.257273,36.7722232,34732m/data=!3m2!1e3!4b1!4m13!4m12!1m5!1m1!1s0x182f116041c8127d:0x97121230126f6bd0!2m2!1d36.9025814!2d-1.2482996!1m5!1m1!1s0x182f17ae62d1a331:0x79306285060fb37!2m2!1d36.8060076!2d-1.2559186!5m1!1e1?entry=ttu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 rounded-full border border-gray-200/80 bg-white/70 px-6 py-3 text-sm font-semibold text-[#171717] shadow-[0_4px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-300 hover:border-[#075874]/30 hover:bg-[#075874]/5 hover:shadow-[0_8px_28px_rgba(7,88,116,0.12)] focus:outline-none focus:ring-2 focus:ring-[#075874] focus:ring-offset-2"
-                  >
-                    <span>Get Directions</span>
-
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    >
-                      <path d="M7 17 17 7M7 7h10v10" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Side - Map */}
-              <div className="w-full lg:w-[55%]">
-                <div className="h-[320px] w-full overflow-hidden rounded-2xl border border-[#171717]/10 shadow-xl sm:h-[420px] md:h-[550px] lg:h-[650px]">
-                  <MapSection />
-                </div>
-              </div>
+        {/* Contact Details List */}
+        <div className="mt-6 flex flex-col gap-5 sm:mt-10 sm:gap-6">
+          {/* Address Item */}
+          <div className="flex items-start gap-4 text-[#171717]/80">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-[#171717]/5 text-[#075874]">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+            </div>
+            <div className="pt-1">
+              <ScrollWipeText
+                className="text-sm font-semibold text-[#171717]"
+                text="Clinic Address"
+                revealColor="#171717"
+                hiddenColor="#dcdcdc"
+                stagger={0}
+                start="top 90%"
+                end="bottom 75%"
+              />
+              <ScrollWipeText
+                className="mt-1 text-sm text-[#171717]/60"
+                text="The Place @ 67, General Mathenge Dr, Westlands"
+                revealColor="#171717"
+                hiddenColor="#e5e5e5"
+                stagger={0}
+                start="top 90%"
+                end="bottom 70%"
+              />
             </div>
           </div>
-        </section>
+
+          {/* Hours Item — uncomment `hidden sm:flex` below to hide on tiny phones */}
+          <div className="flex items-start gap-4 text-[#171717]/80">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-[#171717]/5 text-[#075874]">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+            </div>
+            <div className="pt-1">
+              <ScrollWipeText
+                className="text-sm font-semibold text-[#171717]"
+                text="Opening Hours"
+                revealColor="#171717"
+                hiddenColor="#dcdcdc"
+                stagger={0}
+                start="top 90%"
+                end="bottom 75%"
+              />
+              <ScrollWipeText
+                className="mt-1 text-sm text-[#171717]/60"
+                text="Mon–Fri · 8:00 AM – 6:00 PM"
+                revealColor="#171717"
+                hiddenColor="#e5e5e5"
+                stagger={0}
+                start="top 90%"
+                end="bottom 70%"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Google Maps Directions Button */}
+        <div className="mt-6 sm:mt-10">
+          <a
+            href="https://www.google.com/maps/dir/Nairobi+Cbd,+Nairobi/Dentists+At+The+Place,+The+Place+@+67,+General+Mathenge+Drive,+Nairobi/@-1.257273,36.7722232,34732m/data=!3m2!1e3!4b1!4m13!4m12!1m5!1m1!1s0x182f116041c8127d:0x97121230126f6bd0!2m2!1d36.9025814!2d-1.2482996!1m5!1m1!1s0x182f17ae62d1a331:0x79306285060fb37!2m2!1d36.8060076!2d-1.2559186!5m1!1e1?entry=ttu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 rounded-full border border-gray-200/80 bg-white/70 px-6 py-3 text-sm font-semibold text-[#171717] shadow-[0_4px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-300 hover:border-[#075874]/30 hover:bg-[#075874]/5 hover:shadow-[0_8px_28px_rgba(7,88,116,0.12)] focus:outline-none focus:ring-2 focus:ring-[#075874] focus:ring-offset-2"
+          >
+            <span>Get Directions</span>
+
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            >
+              <path d="M7 17 17 7M7 7h10v10" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </div>
 
       {/* FOOTER */}
