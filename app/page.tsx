@@ -59,9 +59,12 @@ export default function Home() {
           {/* Desktop links */}
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
             <Link href="#about" className="nav-norris">
-              <NorrisText text="About" />
+              <NorrisText text="Facebook" />
             </Link>
-            <Link href="#explore" className="nav-norris">
+            <Link href="#about" className="nav-norris">
+              <NorrisText text="Instagram" />
+            </Link>
+            {/* <Link href="#explore" className="nav-norris">
               <NorrisText text="Explore" />
             </Link>
             <Link href="#experiences" className="nav-norris">
@@ -69,7 +72,7 @@ export default function Home() {
             </Link>
             <Link href="#contact" className="nav-norris">
               <NorrisText text="Contact" />
-            </Link>
+            </Link> */}
           </div>
 
           <Link

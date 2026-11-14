@@ -1201,10 +1201,31 @@ dialog.booking-drawer::backdrop {
   backdrop-filter: blur(12px);
 }
 
+/* globals.css */
 @media (max-width: 767px) {
   .panel-about {
+    position: relative !important;
     height: auto !important;
-    min-height: 125dvh;
-    overflow: visible !important;
+    min-height: 100svh;
+  }
+  .panel-about .parallax-inner {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+  }
+}
+
+/* globals.css */
+@media (max-width: 767px) {
+  .panel-about,
+  .panel-testimonials {
+    position: relative !important;
+    height: auto !important;
+  }
+  .panel-about .parallax-inner,
+  .panel-testimonials .parallax-inner {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
   }
 }

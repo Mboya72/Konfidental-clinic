@@ -279,7 +279,10 @@ export default function HomeAnimation() {
 <section
   id="about"
   data-cta-theme="light"
-  className="parallax-panel panel-about h-auto min-h-[125dvh] overflow-visible sm:min-h-[115dvh] md:h-[100dvh] md:min-h-0 md:overflow-hidden"
+  className="parallax-panel panel-about
+             relative md:sticky
+             h-auto min-h-[200svh] md:min-h-[100svh]
+             overflow-visible"
 >
   <div className="parallax-inner px-4 py-12 sm:px-6 sm:py-16 md:px-12 md:py-24 lg:px-20">
     <div className="relative z-10 mx-auto w-full max-w-8xl">
@@ -541,7 +544,7 @@ export default function HomeAnimation() {
   data-cta-theme="light"
   data-nav-active="light"
   id="testimonials"
-  className="parallax-panel panel-testimonials h-auto min-h-[100dvh] overflow-visible sm:min-h-[100dvh] md:h-[100dvh] md:min-h-0 md:overflow-hidden"
+  className="parallax-panel panel-testimonials relative md:sticky h-auto min-h-[100dvh] md:min-h-[100dvh] overflow-visible"
 >
   <div className="parallax-inner px-4 py-12 sm:px-6 sm:py-16 md:px-12 md:py-24 lg:px-20">
     <div className="relative z-10 mx-auto max-w-8xl">
