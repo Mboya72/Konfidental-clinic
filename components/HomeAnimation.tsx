@@ -843,7 +843,7 @@ export default function HomeAnimation() {
                   </div>
 
                   {/* Hours Item — uncomment `hidden sm:flex` below to hide on tiny phones */}
-                  <div className="flex items-start gap-4 text-[#171717]/80">
+                  <div className="flex items-center gap-4 text-[#171717]/80">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-[#171717]/5 text-[#075874]">
                       <svg
                         width="20"
@@ -871,7 +871,16 @@ export default function HomeAnimation() {
                       />
                       <ScrollWipeText
                         className="mt-1 text-sm text-[#171717]/60"
-                        text="Mon–Fri · 8:00 AM – 6:00 PM"
+                        text="Mon–Fri · 9:00 AM – 5:00 PM"
+                        revealColor="#171717"
+                        hiddenColor="#e5e5e5"
+                        stagger={0}
+                        start="top 90%"
+                        end="bottom 75%"
+                      />
+                      <ScrollWipeText
+                        className="mt-1 text-sm text-[#171717]/60"
+                        text="Sat · 9:00 AM – 1:00 PM"
                         revealColor="#171717"
                         hiddenColor="#e5e5e5"
                         stagger={0}
@@ -1088,11 +1097,11 @@ export default function HomeAnimation() {
                 </ul>
               </div>
 
-              {/* COMPANY COLUMN */}
+              {/* CLINIC COLUMN */}
               <div>
                 <ScrollWipeText
                   className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#171717]/40"
-                  text="Company"
+                  text="Clinic"
                   revealColor="#171717"
                   hiddenColor="#e5e5e5"
                   stagger={0}
@@ -1207,11 +1216,11 @@ export default function HomeAnimation() {
                   </li>
                   <li>
                     <a
-                      href="tel:+254700000000"
+                      href="tel:+254722687947"
                       className="transition-colors hover:text-[#075874]"
                     >
                       <ScrollWipeText
-                        text="+254 700 000 000"
+                        text="+254 722 687 947"
                         revealColor="#171717"
                         hiddenColor="#e5e5e5"
                         stagger={0}
@@ -1222,11 +1231,11 @@ export default function HomeAnimation() {
                   </li>
                   <li>
                     <a
-                      href="mailto:hello@konfidental.co.ke"
+                      href="mailto:drheenavaghela@gmail.com"
                       className="break-all transition-colors hover:text-[#075874]"
                     >
                       <ScrollWipeText
-                        text="hello@konfidental.co.ke"
+                        text="drheenavaghela@gmail.com"
                         revealColor="#171717"
                         hiddenColor="#e5e5e5"
                         stagger={0}
@@ -1238,7 +1247,16 @@ export default function HomeAnimation() {
                   <li className="pt-2">
                     <ScrollWipeText
                       className="text-[#171717]/50"
-                      text="Mon – Fri, 8:00 – 18:00"
+                      text="Mon – Fri, 8:00 – 5:00"
+                      revealColor="#171717"
+                      hiddenColor="#e5e5e5"
+                      stagger={0}
+                      start="top 92%"
+                      end="bottom 82%"
+                    />
+                    <ScrollWipeText
+                      className="text-[#171717]/50"
+                      text="Sat, 9:00 – 1:00"
                       revealColor="#171717"
                       hiddenColor="#e5e5e5"
                       stagger={0}

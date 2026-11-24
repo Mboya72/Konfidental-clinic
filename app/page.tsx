@@ -58,12 +58,22 @@ export default function Home() {
         <nav className="mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-12 lg:px-20">
           {/* Desktop links */}
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
-            <Link href="#about" className="nav-norris">
-              <NorrisText text="Facebook" />
-            </Link>
-            <Link href="#about" className="nav-norris">
-              <NorrisText text="Instagram" />
-            </Link>
+            <Link
+  href="https://www.facebook.com/drheenavagheladentalclinic"
+  className="nav-norris"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <NorrisText text="Facebook" />
+</Link>
+<Link
+  href="https://www.instagram.com/konfidentalclinic/"
+  className="nav-norris"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <NorrisText text="Instagram" />
+</Link>
             {/* <Link href="#explore" className="nav-norris">
               <NorrisText text="Explore" />
             </Link>
