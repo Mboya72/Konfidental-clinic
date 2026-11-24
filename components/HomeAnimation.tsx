@@ -475,7 +475,7 @@ export default function HomeAnimation() {
                       </div>
                       <div>
                         <a
-                          href="https://www.google.com/maps/dir/Nairobi+Cbd,+Nairobi/Dentists+At+The+Place,+The+Place+@+67,+General+Mathenge+Drive,+Nairobi/@-1.257273,36.7722232,34732m/data=!3m2!1e3!4b1!4m13!4m12!1m5!1m1!1s0x182f116041c8127d:0x97121230126f6bd0!2m2!1d36.9025814!2d-1.2482996!1m5!1m1!1s0x182f17ae62d1a331:0x79306285060fb37!2m2!1d36.8060076!2d-1.2559186!5m1!1e1?entry=ttu"
+                          href="https://maps.app.goo.gl/yedLPiwYR2ze5prPA"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group inline-flex items-center gap-3 rounded-full border border-gray-200/80 bg-white/70 px-6 py-3 text-sm font-semibold text-[#171717] shadow-[0_4px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-300 hover:border-[#075874]/30 hover:bg-[#075874]/5 hover:shadow-[0_8px_28px_rgba(7,88,116,0.12)] focus:outline-none focus:ring-2 focus:ring-[#075874] focus:ring-offset-2"

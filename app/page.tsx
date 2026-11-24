@@ -123,10 +123,10 @@ export default function Home() {
             </a>
 
             <a
-              href="mailto:info@example.com"
+              href="mailto:drheenavaghela@gmail.com"
               className="hidden nav-norris sm:inline-flex"
             >
-              <NorrisText text="info@example.com" />
+              <NorrisText text="drheenavaghela@gmail.com" />
             </a>
 
             {/* Hamburger — bars use currentColor so they stay visible
