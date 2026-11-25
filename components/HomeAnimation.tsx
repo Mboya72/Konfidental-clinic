@@ -180,6 +180,7 @@ const clinic = [
   { name: "Reception", image: "/assets/images/02.jpg" },
   { name: "Sitting Area", image: "/assets/images/03.jpg" },
   { name: "Surgery 02", image: "/assets/images/04.jpg" },
+  { name: "Consultation Room", image: "/assets/images/05.webp" },
 ];
 
 function ClinicCarousel() {
@@ -223,7 +224,7 @@ function ClinicCarousel() {
       </div>
 
       {/* TEXT CAROUSEL */}
-      <div className="relative h-[200px] w-full max-w-[280px] shrink-0 overflow-hidden sm:h-[260px] md:h-[550px] md:w-[300px] lg:w-[350px]">
+      <div className="relative h-[200px] w-full max-w-[300px] shrink-0 overflow-hidden sm:h-[260px] md:h-[550px] md:w-[300px] lg:w-[350px]">
         {clinic.map((item, index) => {
           let offset = index - activeIndex;
           if (offset > clinic.length / 2) offset -= clinic.length;
@@ -379,7 +380,7 @@ export default function HomeAnimation() {
                 ref={textOverlayRef}
                 className="absolute inset-0 z-3 flex flex-col justify-between px-4 py-6 text-[#171717] sm:px-6 sm:py-8 md:px-12 lg:px-20"
               >
-                <h1 className="absolute left-[6%] top-[14%] max-w-[80%] text-4xl font-semibold leading-[0.9] tracking-tight sm:text-5xl md:top-[20%] md:max-w-[50%] md:text-7xl lg:text-8xl">
+                <h1 className="absolute left-[6%] top-[14%] max-w-[80%] text-4xl font-semibold leading-[0.9] tracking-tight sm:text-5xl md:top-[20%] md:max-w-[50%] md:text-5xl lg:text-8xl">
                   Comfortable
                   <br />
                   Care
@@ -391,8 +392,8 @@ export default function HomeAnimation() {
                     Enjoy Smiling with Confidence
                   </h2>
                 </div>
-                <h2 className="absolute right-[6%] top-[82%] text-right text-4xl font-semibold leading-[0.9] tracking-tight sm:text-5xl md:top-[48%] md:text-7xl lg:text-8xl">
-                  Confidental
+                <h2 className="absolute right-[6%] top-[82%] text-right text-4xl font-semibold leading-[0.9] tracking-tight sm:text-5xl md:top-[58%] md:text-5xl lg:text-8xl">
+                  Confident
                   <br />
                   Smile
                 </h2>
@@ -942,7 +943,7 @@ export default function HomeAnimation() {
                       />
                       <ScrollWipeText
                         className="mt-1 text-sm text-[#171717]/60"
-                        text="M1 Southern Wing, Kenrail Towers, Mkungu Cl, Nairobi"
+                        text="M1 Northern Wing, Kenrail Towers, Mkungu Cl, Nairobi"
                         revealColor="#171717"
                         hiddenColor="#e5e5e5"
                         stagger={0}
@@ -1035,67 +1036,9 @@ export default function HomeAnimation() {
       {/* FOOTER */}
       <footer
         data-cta-theme="light"
-        className="relative z-50 w-full border-t border-[#171717]/10 bg-white px-4 py-12 text-[#171717] sm:px-6 sm:py-16 md:px-12 lg:px-20"
+        className="relative z-50 w-full bg-white px-4 py-12 text-[#171717] sm:px-6 sm:py-16 md:px-12 lg:px-20"
       >
         <div className="mx-auto max-w-[1400px]">
-          {/* NEWSLETTER ROW */}
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            {/* Headline — 2-line wipe */}
-            <ScrollWipeText
-              className="max-w-md text-2xl font-bold tracking-tight text-[#171717] sm:text-3xl md:text-3xl lg:text-4xl"
-              lines={["Join our newsletter to", "keep up to date with us!"]}
-              revealColor="#171717"
-              hiddenColor="#e5e5e5"
-              stagger={0.15}
-              start="top 90%"
-              end="bottom 59%"
-              text={undefined}
-            />
-
-            {/* Form */}
-            <form
-              className="flex w-full max-w-md items-center gap-2 rounded-full border border-[#171717]/20 p-1.5 pl-4 transition-all focus-within:border-[#075874] focus-within:ring-1 focus-within:ring-[#075874]"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="shrink-0 text-[#171717]/40"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-transparent text-sm outline-none placeholder:text-[#171717]/40"
-                required
-              />
-              <button
-                type="submit"
-                className="group shrink-0 rounded-full bg-[#075874] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#054a61] sm:px-5"
-              >
-                <ScrollWipeText
-                  className="text-sm font-semibold text-white text-inherit"
-                  text="Subscribe"
-                  revealColor="#ffffff"
-                  hiddenColor="rgba(255,255,255,0.25)"
-                  stagger={0}
-                  start="top 95%"
-                  end="bottom 75%"
-                />
-              </button>
-            </form>
-          </div>
-
-          <hr className="my-10 border-[#171717]/10 sm:my-12" />
 
           {/* MAIN FOOTER GRID */}
           <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12 lg:gap-8">

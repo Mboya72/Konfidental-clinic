@@ -97,7 +97,7 @@ export default function Home() {
             {/* Phone link — ONE visible label only.
                 Inherits currentColor so it flips with the theme. */}
             <a
-              href="tel:+254700000000"
+              href="tel:+254722687947"
               className="flex items-center gap-1.5 nav-norris"
               aria-label="Call us"
             >
@@ -231,7 +231,7 @@ export default function Home() {
             {/* Drawer CTA */}
             <div className="mt-8 flex flex-col gap-3">
               <a
-                href="tel:+254700000000"
+                href="tel:+254722687947"
                 onClick={handleNavClick}
                 className="flex items-center justify-center gap-2 rounded-full border border-[#171717]/15 px-5 py-3 text-sm font-semibold text-[#171717] transition-colors hover:border-[#075874]/40 hover:bg-[#075874]/5"
               >
