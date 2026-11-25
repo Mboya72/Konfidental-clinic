@@ -104,6 +104,8 @@ function ServicesCarousel() {
     });
   }, []);
 
+  
+
   return (
     <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center">
       {/* ---------- IMAGE PANEL ---------- */}
@@ -172,6 +174,90 @@ function ServicesCarousel() {
     </div>
   );
 }
+
+const clinic = [
+  { name: "Surgery 01", image: "/assets/images/01.jpg" },
+  { name: "Reception", image: "/assets/images/02.jpg" },
+  { name: "Sitting Area", image: "/assets/images/03.jpg" },
+  { name: "Surgery 02", image: "/assets/images/04.jpg" },
+];
+
+function ClinicCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((c) => (c + 1) % clinic.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Preload images
+  useEffect(() => {
+    clinic.forEach((s) => {
+      const img = new window.Image();
+      img.src = s.image;
+    });
+  }, []);
+
+  return (
+    <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center">
+      {/* IMAGE PANEL */}
+      <div className="relative h-[320px] w-full max-w-[280px] shrink-0 overflow-hidden rounded-xl sm:h-[420px] md:h-[550px] md:w-[300px] lg:w-[350px]">
+        {clinic.map((item, index) => (
+          <img
+            key={item.name}
+            src={item.image}
+            alt={item.name}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              opacity: index === activeIndex ? 1 : 0,
+              transform: index === activeIndex ? "scale(1.08)" : "scale(1)",
+              transition:
+                "opacity 900ms cubic-bezier(0.4, 0, 0.2, 1), transform 4500ms cubic-bezier(0.4, 0, 0.2, 1)",
+              willChange: "opacity, transform",
+            }}
+          />
+        ))}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+      </div>
+
+      {/* TEXT CAROUSEL */}
+      <div className="relative h-[200px] w-full max-w-[280px] shrink-0 overflow-hidden sm:h-[260px] md:h-[550px] md:w-[300px] lg:w-[350px]">
+        {clinic.map((item, index) => {
+          let offset = index - activeIndex;
+          if (offset > clinic.length / 2) offset -= clinic.length;
+          if (offset < -clinic.length / 2) offset += clinic.length;
+
+          const distance = Math.abs(offset);
+          const opacity =
+            distance === 0 ? 1 : distance === 1 ? 0.35 : distance === 2 ? 0.12 : 0;
+
+          return (
+            <p
+              key={item.name}
+              className="absolute left-0 w-full whitespace-nowrap text-center text-lg font-semibold tracking-tight sm:text-xl md:text-left md:text-3xl lg:text-4xl"
+              style={{
+                top: "50%",
+                transform: `translateY(calc(${offset * 44}px - 50%)) scale(${
+                  distance === 0 ? 1 : 0.94
+                })`,
+                opacity,
+                filter: distance === 0 ? "blur(0px)" : "blur(0.4px)",
+                transition:
+                  "transform 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 700ms ease, filter 700ms ease",
+                willChange: "transform, opacity",
+              }}
+            >
+              {item.name}
+            </p>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -591,6 +677,30 @@ export default function HomeAnimation() {
             </div>
           </div>
         </section>
+
+        <section
+          id="services"
+          data-cta-theme="light"
+          data-nav-active="dark"
+          className="parallax-panel bg-amber-50 panel-clinic min-h-screen text-[#0a0a0a]"
+        >
+          <div className="parallax-inner px-4 py-16 sm:px-6 md:px-12 md:py-20 lg:px-20">
+            <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center gap-10 md:flex-row md:gap-0">
+              <ClinicCarousel/>
+              <div className="hidden flex-1 items-center px-5 md:flex md:px-8">
+                <div className="h-px flex-1 bg-white/20" />
+                <span className="mx-4 text-2xl md:text-3xl">✦</span>
+                <div className="h-px flex-1 bg-white/20" />
+              </div>
+              <div className="flex w-full shrink-0 items-center justify-center md:w-auto md:justify-start">
+                <h2 className="whitespace-nowrap text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+                  Our Clinic
+                </h2>
+              </div>
+            </div>
+          </div>
+        </section>
+        
 
         {/* Section 03 — Our Services */}
         <section

@@ -624,6 +624,7 @@ body {
 .panel-hero { z-index: 1; background-color: #171717; }
 .panel-about { z-index: 10; background-color: #ffffff; }
 .panel-services { z-index: 20; background-color: #075874; }
+.panel-clinic { z-index: 20; background-color: #f0f2f5; }
 .panel-testimonials { z-index: 30; background-color: #ffffff; }
 .panel-map { z-index: 40; background-color: #f0f2f5; }
 
