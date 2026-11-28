@@ -52,37 +52,27 @@ export default function Home() {
         onClose={() => setIsBookingOpen(false)}
       />
 
-      {/* Navbar — colors driven by .site-nav / data-cta-theme so it stays visible
-          on both the dark hero and light sections. */}
+      {/* Navbar */}
       <header className="site-nav fixed left-0 top-0 z-50 w-full">
         <nav className="mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-12 lg:px-20">
           {/* Desktop links */}
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
             <Link
-  href="https://www.facebook.com/drheenavagheladentalclinic"
-  className="nav-norris"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <NorrisText text="Facebook" />
-</Link>
-<Link
-  href="https://www.instagram.com/konfidentalclinic/"
-  className="nav-norris"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <NorrisText text="Instagram" />
-</Link>
-            {/* <Link href="#explore" className="nav-norris">
-              <NorrisText text="Explore" />
+              href="https://www.facebook.com/drheenavagheladentalclinic"
+              className="nav-norris"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <NorrisText text="Facebook" />
             </Link>
-            <Link href="#experiences" className="nav-norris">
-              <NorrisText text="Experiences" />
+            <Link
+              href="https://www.instagram.com/konfidentalclinic/"
+              className="nav-norris"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <NorrisText text="Instagram" />
             </Link>
-            <Link href="#contact" className="nav-norris">
-              <NorrisText text="Contact" />
-            </Link> */}
           </div>
 
           <Link
@@ -94,8 +84,6 @@ export default function Home() {
           </Link>
 
           <div className="flex flex-row items-center gap-4 text-sm font-medium sm:gap-6 md:gap-12 md:text-md">
-            {/* Phone link — ONE visible label only.
-                Inherits currentColor so it flips with the theme. */}
             <a
               href="tel:+254722687947"
               className="flex items-center gap-1.5 nav-norris"
@@ -129,8 +117,7 @@ export default function Home() {
               <NorrisText text="drheenavaghela@gmail.com" />
             </a>
 
-            {/* Hamburger — bars use currentColor so they stay visible
-                on dark hero AND light sections. */}
+            {/* Hamburger */}
             <button
               type="button"
               onClick={() => setIsMenuOpen((o) => !o)}
@@ -170,6 +157,7 @@ export default function Home() {
           isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
         aria-hidden={!isMenuOpen}
+        {...(!isMenuOpen ? { inert: "" as unknown as boolean } : {})}
       >
         {/* Backdrop */}
         <div
@@ -178,28 +166,35 @@ export default function Home() {
             isMenuOpen ? "opacity-100" : "opacity-0"
           }`}
         />
-        {/* Panel — explicit dark text on white so it never inherits
-            the hero's light theme text color. */}
+        {/* Panel */}
         <div
-          className={`absolute inset-x-0 top-0 bg-white text-[#171717] shadow-xl transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            isMenuOpen
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-4 opacity-0"
+          className={`absolute inset-x-0 top-0 max-h-[100dvh] overflow-y-auto bg-white text-[#171717] shadow-xl transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
           }`}
         >
           <div className="px-6 pb-8 pt-20">
             <nav className="flex flex-col divide-y divide-[#171717]/10">
               {[
-                { href: "#about", label: "About" },
-                { href: "#explore", label: "Explore" },
-                { href: "#experiences", label: "Experiences" },
-                { href: "#contact", label: "Contact" },
+                {
+                  href: "https://www.facebook.com/drheenavagheladentalclinic",
+                  label: "Facebook",
+                },
+                {
+                  href: "https://www.instagram.com/konfidentalclinic/",
+                  label: "Instagram",
+                },
+                {
+                  href: "mailto:drheenavaghela@gmail.com",
+                  label: "Email",
+                },
               ].map((item, i) => (
-                <Link
-                  key={item.href}
+                <a
+                  key={item.label}
                   href={item.href}
                   onClick={handleNavClick}
-                  className="group flex items-center justify-between py-4 text-2xl font-semibold tracking-tight text-[#171717]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group nav-norris flex items-center justify-between py-4 text-2xl font-semibold tracking-tight text-[#171717]"
                   style={{
                     transition: "opacity 300ms ease, transform 300ms ease",
                     transitionDelay: isMenuOpen ? `${80 + i * 60}ms` : "0ms",
@@ -224,7 +219,7 @@ export default function Home() {
                   >
                     <path d="M7 17 17 7M7 7h10v10" />
                   </svg>
-                </Link>
+                </a>
               ))}
             </nav>
 
@@ -250,13 +245,6 @@ export default function Home() {
                 </svg>
                 <span>Call Now</span>
               </a>
-              <a
-                href="mailto:info@example.com"
-                onClick={handleNavClick}
-                className="flex items-center justify-center gap-2 rounded-full bg-[#075874] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#054a61]"
-              >
-                <span>Email Us</span>
-              </a>
             </div>
           </div>
         </div>
@@ -264,7 +252,7 @@ export default function Home() {
 
       <HomeAnimation />
 
-      {/* Appointment CTA — Liquid Glass with adaptive theme */}
+      {/* Appointment CTA */}
       <div className="pointer-events-none fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-3 p-4 md:p-7">
         <button
           onClick={() => setIsBookingOpen(true)}

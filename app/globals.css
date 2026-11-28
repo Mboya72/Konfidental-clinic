@@ -31,7 +31,7 @@ body {
 
 /* ─── TEAM PANEL ─────────────────────────────────────────── */
 .panel-team {
-  z-index: 15;          /* sits BELOW services (20) and clinic (20), ABOVE about (10) */
+  z-index: 15;
   background-color: #f8f9fa;
 }
 
@@ -627,12 +627,13 @@ body {
   justify-content: center;
 }
 
-.panel-hero { z-index: 1; background-color: #171717; }
-.panel-about { z-index: 10; background-color: #ffffff; }
-.panel-services { z-index: 20; background-color: #075874; }
-.panel-clinic { z-index: 20; background-color: #f0f2f5; }
+.panel-hero         { z-index: 1;  background-color: #171717; }
+.panel-about        { z-index: 10; background-color: #ffffff; }
+.panel-clinic       { z-index: 15; background-color: #f0f2f5; }
+.panel-team         { z-index: 20; background-color: #f8f9fa; }
+.panel-services     { z-index: 25; background-color: #075874; }
 .panel-testimonials { z-index: 30; background-color: #ffffff; }
-.panel-map { z-index: 40; background-color: #f0f2f5; }
+.panel-map          { z-index: 40; background-color: #f0f2f5; }
 
 /* ---- Services spotlight ---- */
 .services-layout {
@@ -881,7 +882,7 @@ body {
   color: inherit;
 }
 
-/* -------- SECTION-DRIVEN COLOR SWAP (must come AFTER Norris rules) -------- */
+/* -------- SECTION-DRIVEN COLOR SWAP -------- */
 
 [data-cta-active="dark"] .liquid-btn > span {
   color: #ffffff;
@@ -1137,7 +1138,7 @@ body {
   justify-content: center;
   width: 3.25rem;
   height: 3.25rem;
-  color: #ffffff;    /* default; theme overrides below */
+  color: #ffffff;
 }
 
 .liquid-btn--icon .liquid-btn-icon {
@@ -1174,13 +1175,10 @@ body {
   cursor: pointer;
 }
 
-/* The actual Pin SVG */
 .custom-map-pin__svg {
   width: 40px;
   height: 40px;
-  /* Add a subtle drop shadow to the pin */
   filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
-  /* Add a hover effect */
   transition: transform 0.2s ease;
 }
 
@@ -1188,7 +1186,6 @@ body {
   transform: translateY(-2px) scale(1.05);
 }
 
-/* The shadow "dot" on the map floor */
 .custom-map-pin__shadow {
   position: absolute;
   bottom: 0;
@@ -1196,78 +1193,29 @@ body {
   height: 6px;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
-  /* Blur it so it looks like a soft shadow */
   filter: blur(2px);
   transform: translateY(3px);
 }
 
-/* Add to globals.css */
+/* ========================================
+   BOOKING DRAWER
+======================================== */
+
 dialog.booking-drawer {
   margin: 0 auto !important;
   top: auto !important;
   bottom: 0 !important;
   max-height: 90vh;
-  overflow: visible !important; /* This prevents the X button from being cut off */
+  overflow: visible !important;
 }
 
 dialog.booking-drawer::backdrop {
   backdrop-filter: blur(12px);
 }
 
-/* globals.css */
-@media (max-width: 767px) {
-  .panel-about {
-    position: relative !important;
-    height: auto !important;
-    min-height: 100svh;
-  }
-  .panel-about .parallax-inner {
-    position: relative !important;
-    inset: auto !important;
-    height: auto !important;
-  }
-}
-
-/* globals.css */
-@media (max-width: 767px) {
-  .panel-about,
-  .panel-testimonials {
-    position: relative !important;
-    height: auto !important;
-  }
-  .panel-about .parallax-inner,
-  .panel-testimonials .parallax-inner {
-    position: relative !important;
-    inset: auto !important;
-    height: auto !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .panel-about,
-  .panel-testimonials,
-  .panel-map {
-    position: relative !important;
-    height: auto !important;
-    overflow: visible !important;   /* ← add this */
-  }
-  .panel-about .parallax-inner,
-  .panel-testimonials .parallax-inner,
-  .panel-map .parallax-inner {
-    position: relative !important;
-    inset: auto !important;
-    height: auto !important;
-    overflow: visible !important;   /* ← add this */
-  }
-}
-
-.panel-hero         { z-index: 1;  background-color: #171717; }
-.panel-about        { z-index: 10; background-color: #ffffff; }
-.panel-clinic       { z-index: 15; background-color: #f0f2f5; }
-.panel-team         { z-index: 20; background-color: #f8f9fa; }
-.panel-services     { z-index: 25; background-color: #075874; }
-.panel-testimonials { z-index: 30; background-color: #ffffff; }
-.panel-map          { z-index: 40; background-color: #f0f2f5; }
+/* ========================================
+   MOBILE PANEL OVERRIDES
+======================================== */
 
 @media (max-width: 767px) {
   .panel-about,
@@ -1287,4 +1235,23 @@ dialog.booking-drawer::backdrop {
     height: auto !important;
     overflow: visible !important;
   }
+}
+
+/* ========================================
+   MOBILE DRAWER — NORRIS TEXT VISIBILITY
+======================================== */
+
+/* Force visible ink color for NorrisText glyphs inside the mobile drawer.
+   (Without these rules, .norris-char-inner stays transparent because the
+   theme-scoped rules only target .nav-norris / .site-nav.) */
+
+#mobile-menu .norris-char-inner::before,
+#mobile-menu .norris-char-inner::after {
+  color: #171717 !important;
+}
+
+/* Hover: slide both layers to teal (matches desktop nav hover) */
+#mobile-menu a:hover .norris-char-inner::before,
+#mobile-menu a:hover .norris-char-inner::after {
+  color: #075874 !important;
 }
