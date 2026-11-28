@@ -832,7 +832,7 @@ const [activeMember, setActiveMember] = useState<TeamMember | null>(null);
           <div className="parallax-inner relative h-full w-full">
             {/* Base Image */}
             <section
-              id="about"
+              id="hero"
               data-cta-theme="light"
               ref={firstSectionRef}
               className="absolute inset-0 h-full w-full overflow-hidden"
@@ -929,7 +929,7 @@ const [activeMember, setActiveMember] = useState<TeamMember | null>(null);
           data-cta-theme="light"
           className="parallax-panel panel-about
              relative md:sticky
-             h-auto min-h-[200svh] md:min-h-[100svh]
+             h-auto min-h-[100svh] md:min-h-[100svh]
              overflow-visible"
         >
           <div className="parallax-inner px-4 py-12 sm:px-6 sm:py-16 md:px-12 md:py-24 lg:px-20">
@@ -1941,23 +1941,18 @@ const [activeMember, setActiveMember] = useState<TeamMember | null>(null);
           {/* BOTTOM BAR */}
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-[#171717]/50 md:flex-row">
             <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:gap-6 sm:text-left">
-              <ScrollWipeText
-                className="text-xs text-[#171717]/50"
-                text={
-                  <>
-                    Designed & Maintained by{" "}
-                    <span className="font-semibold text-[#075874]">
-                      32 Technologies
-                    </span>{" "}
-                    “Teching Care Of You”
-                  </>
-                }
-                revealColor="#171717"
-                hiddenColor="#e5e5e5"
-                stagger={0}
-                start="top 95%"
-                end="bottom 94%"
-              />
+              <p className="text-xs text-[#171717]/50">
+                Designed & Maintained by{" "}
+                <a
+                  href="https://32technologies.coke"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#075874] underline-offset-2 transition-colors hover:underline hover:text-[#054a61]"
+                >
+                  32 Technologies
+                </a>{" "}
+                “Teching Care Of You”
+              </p>
               <ScrollWipeText
                 className="text-xs text-[#171717]/50"
                 text={`© ${year || 2024} Konfidental Clinic.`}
