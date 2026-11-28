@@ -29,6 +29,12 @@ body {
   font-family: var(--font-gc-north), sans-serif;
 }
 
+/* ─── TEAM PANEL ─────────────────────────────────────────── */
+.panel-team {
+  z-index: 15;          /* sits BELOW services (20) and clinic (20), ABOVE about (10) */
+  background-color: #f8f9fa;
+}
+
 /* ========================================
    NORRIS TEXT ANIMATION
 ======================================== */
@@ -1252,5 +1258,33 @@ dialog.booking-drawer::backdrop {
     inset: auto !important;
     height: auto !important;
     overflow: visible !important;   /* ← add this */
+  }
+}
+
+.panel-hero         { z-index: 1;  background-color: #171717; }
+.panel-about        { z-index: 10; background-color: #ffffff; }
+.panel-clinic       { z-index: 15; background-color: #f0f2f5; }
+.panel-team         { z-index: 20; background-color: #f8f9fa; }
+.panel-services     { z-index: 25; background-color: #075874; }
+.panel-testimonials { z-index: 30; background-color: #ffffff; }
+.panel-map          { z-index: 40; background-color: #f0f2f5; }
+
+@media (max-width: 767px) {
+  .panel-about,
+  .panel-team,
+  .panel-testimonials,
+  .panel-map {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .panel-about .parallax-inner,
+  .panel-team .parallax-inner,
+  .panel-testimonials .parallax-inner,
+  .panel-map .parallax-inner {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 }

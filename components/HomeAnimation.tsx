@@ -86,6 +86,218 @@ const services = [
   { name: "Pediatric Dentistry", image: "/assets/images/pediatric.jpg" },
 ];
 
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  // Extended details for the modal
+  tagline?: string;
+  education?: string[];
+  expertise?: string[];
+  experience?: { period: string; title: string; place: string; detail?: string }[];
+  languages?: string[];
+  courses?: string[];
+  highlights?: string[];
+  contact?: { phone?: string; email?: string };
+};
+
+const TEAM: TeamMember[] = [
+  {
+    name: "Dr. Heena Vaghela",
+    role: "Founder & Chief Dental Surgeon",
+    image: "/assets/images/team/heena.jpg",
+    bio: "B.D.S, Manipal. 12+ years experience. Comprehensive dentistry, endodontics, implants & cosmetic care.",
+    tagline:
+      "Dedicated and highly skilled Dental Surgeon with more than 12 years of experience in providing exceptional oral healthcare services.",
+    education: [
+      "B.D.S — Manipal College of Dental Sciences, Manipal MAHE, Karnataka, India (2002–2007)",
+      "Secondary & Primary — Oshwal Academy, Mombasa",
+    ],
+    expertise: [
+      "Comprehensive dental diagnosis & treatment planning",
+      "Minor oral surgical procedures",
+      "Restorative dentistry (fillings, crowns, bridges)",
+      "Root canal therapy",
+      "Orthodontics",
+      "Implantology",
+      "Periodontal therapy",
+      "Cosmetic dentistry (veneers, teeth whitening)",
+    ],
+    experience: [
+      {
+        period: "Oct 2015 – Present",
+        title: "Owner & Chief Dental Surgeon",
+        place: "Konfidential Clinic, Nairobi",
+      },
+      {
+        period: "Mar 2011 – May 2015",
+        title: "Chief Dental Surgeon",
+        place: "Pandya Memorial Hospital, Mombasa",
+      },
+      {
+        period: "Jan 2009 – Feb 2011",
+        title: "Dental Officer",
+        place: "Coast Provincial General Hospital, Mombasa",
+      },
+      {
+        period: "2012 & 2015",
+        title: "Locum Dentist",
+        place: "Aga Khan Hospital — Mombasa (2012) & Nairobi (Dec 2015 – Jan 2016)",
+      },
+    ],
+    courses: [
+      "Advanced Endodontics — DAC College (Aug 2022)",
+      "Smile Design & Occlusion with Ceramic Indirect Veneers (Jan 2019)",
+      "Alveolar Bone Augmentation for Dental Implants — Dentsply Sirona, South Africa (2019)",
+      "Aesthetic Implant Dentistry — Dentsply Sirona, South Africa (2019)",
+      "Basic Implant Dentistry Course — Dentsply Sirona, South Africa (2019)",
+      "IFZI Dental Implants Course — Nuremberg, Germany (2018)",
+    ],
+    highlights: [
+      "Rotarian — Rotary Club of Nairobi Peponi; served as Club President (2016–2017)",
+      "Treasurer — Kenya Dental Association, Coast Branch (2013–2015)",
+      "Volunteer dentist at Tumaini Children's Home (2013–2015)",
+      "Led numerous free dental camps across Mombasa & Nairobi counties",
+    ],
+    languages: ["English", "Gujarati", "Kiswahili", "Hindi"],
+    contact: {
+      phone: "+254 722 687 947",
+      email: "drheenavaghela@gmail.com",
+    },
+  },
+  {
+    name: "Dr. Mitul Vaghela",
+    role: "Orthodontist",
+    image: "/assets/images/team/mitul.jpg",
+    bio: "MDS Orthodontics & Dentofacial Orthopaedics, Dalian Medical University. Specialising in fixed & removable appliance therapy.",
+    tagline:
+      "Orthodontist specialising in advanced orthodontic treatments to correct dental and facial irregularities, with a focus on precision, patient satisfaction, and multidisciplinary collaboration.",
+    education: [
+      "MDS Orthodontics & Dentofacial Orthopaedics — Dalian Medical University, China (2011–2014)",
+      "B.D.S — Manipal College of Dental Sciences, Manipal, Karnataka, India (2003–2008)",
+    ],
+    expertise: [
+      "Orthodontic diagnosis & treatment planning",
+      "Fixed & removable appliance therapy",
+      "Interceptive & preventive orthodontics",
+      "Clinical precision & attention to detail",
+      "Continuous professional development",
+    ],
+    experience: [
+      {
+        period: "2016 – Present",
+        title: "Orthodontist",
+        place: "Private Dental Practice, Nairobi",
+      },
+      {
+        period: "Jan 2014 – 2016",
+        title: "Rotational Internship (Specialist Recognition)",
+        place: "Ministry of Medical Services, Kenya",
+      },
+      {
+        period: "2009 – 2010",
+        title: "Rotational Internship",
+        place: "Coast Province General Hospital, Mombasa",
+      },
+    ],
+    highlights: [
+      "Participated in Dental & Eye Camps — Rotary Club of Bahari, Mombasa (2015)",
+      "Medical & Dental Check-up Camp — Lions Club of Pwani (2010)",
+      "Port Reitz School for the Physically Disabled — Rotary Club of Bahari (2009)",
+    ],
+    languages: ["English", "Chinese", "Gujarati", "Kiswahili", "Hindi"],
+    contact: {
+      phone: "+254 728 699 740",
+      email: "drmitulvaghela@gmail.com",
+    },
+  },
+  {
+    name: "Dr. Nisha Sapra",
+    role: "Consulting Dental Surgeon",
+    image: "/assets/images/team/nisha.jpg",
+    bio: "Director & Chief Dental Surgeon at Allsmiles Dental Practice. Long-standing clinical collaborator.",
+    tagline:
+      "Experienced dental surgeon and clinical collaborator, bringing restorative and cosmetic dentistry expertise to the Konfidential team.",
+    expertise: [
+      "Restorative dentistry",
+      "Cosmetic dentistry",
+      "Clinical collaboration & case planning",
+    ],
+    languages: ["English", "Kiswahili", "Hindi"],
+  },
+  {
+    name: "Dr. Parvin Singh Jandu",
+    role: "Consulting Dental Surgeon",
+    image: "/assets/images/team/parvin.jpg",
+    bio: "Director & Chief Dental Surgeon at Drs Jandu and Desai Dental Practice. Restorative & surgical expertise.",
+    tagline:
+      "Consulting surgeon with deep restorative and surgical expertise, supporting complex cases at Konfidential.",
+    expertise: [
+      "Restorative dentistry",
+      "Oral surgery",
+      "Complex case management",
+    ],
+    languages: ["English", "Kiswahili", "Hindi", "Punjabi"],
+  },
+  {
+    name: "Sarah Wanjiku",
+    role: "Practice Manager",
+    image: "/assets/images/team/sarah.jpg",
+    bio: "Oversees patient experience, scheduling and clinic operations to keep every visit seamless.",
+    tagline:
+      "Leads day-to-day clinic operations, ensuring every patient's journey — from booking to follow-up — is smooth and welcoming.",
+    expertise: [
+      "Clinic operations",
+      "Patient experience",
+      "Team coordination",
+    ],
+    languages: ["English", "Kiswahili"],
+  },
+  {
+    name: "Grace Akinyi",
+    role: "Dental Hygienist",
+    image: "/assets/images/team/grace.jpg",
+    bio: "Preventive care, scaling & polishing, and patient education for lifelong oral health.",
+    tagline:
+      "Focused on preventive care and patient education — helping patients build lifelong oral health habits.",
+    expertise: [
+      "Scaling & polishing",
+      "Preventive care",
+      "Oral health education",
+    ],
+    languages: ["English", "Kiswahili"],
+  },
+  {
+    name: "Brian Otieno",
+    role: "Dental Assistant",
+    image: "/assets/images/team/brian.jpg",
+    bio: "Chairside support, sterilisation and patient comfort across all treatment rooms.",
+    tagline:
+      "Provides chairside support across all treatment rooms, ensuring sterility, comfort and smooth procedures.",
+    expertise: [
+      "Chairside assistance",
+      "Sterilisation protocols",
+      "Patient comfort",
+    ],
+    languages: ["English", "Kiswahili"],
+  },
+  {
+    name: "Amina Hassan",
+    role: "Front Desk & Patient Care",
+    image: "/assets/images/team/amina.jpg",
+    bio: "First point of contact — welcoming patients and coordinating appointments with care.",
+    tagline:
+      "The first friendly face you'll meet at Konfidential — coordinating appointments and making every patient feel at home.",
+    expertise: [
+      "Patient reception",
+      "Appointment coordination",
+      "Patient care",
+    ],
+    languages: ["English", "Kiswahili", "Somali"],
+  },
+];
+
 function ServicesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -103,8 +315,6 @@ function ServicesCarousel() {
       img.src = s.image;
     });
   }, []);
-
-  
 
   return (
     <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center">
@@ -232,7 +442,13 @@ function ClinicCarousel() {
 
           const distance = Math.abs(offset);
           const opacity =
-            distance === 0 ? 1 : distance === 1 ? 0.35 : distance === 2 ? 0.12 : 0;
+            distance === 0
+              ? 1
+              : distance === 1
+                ? 0.35
+                : distance === 2
+                  ? 0.12
+                  : 0;
 
           return (
             <p
@@ -259,6 +475,273 @@ function ClinicCarousel() {
   );
 }
 
+function ModalBlock({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <h3 className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#171717]/40">
+        {title}
+      </h3>
+      {children}
+    </div>
+  );
+}
+
+function TeamModal({
+  member,
+  onClose,
+}: {
+  member: TeamMember | null;
+  onClose: () => void;
+}) {
+  // Close on Escape + lock body scroll while open
+  useEffect(() => {
+    if (!member) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [member, onClose]);
+
+  if (!member) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${member.name} profile`}
+    >
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-[#171717]/60 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      {/* Panel */}
+      <div
+        className="relative z-10 flex max-h-[90svh] w-full max-w-3xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl sm:m-4 sm:rounded-3xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          aria-label="Close profile"
+          className="absolute right-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#171717] shadow-md ring-1 ring-black/5 backdrop-blur transition hover:bg-white hover:scale-105 sm:right-4 sm:top-4"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+
+        {/* Scrollable content */}
+        <div className="overflow-y-auto">
+          {/* Header */}
+          <div className="flex flex-col items-center gap-5 bg-[#f8f9fa] px-6 pb-8 pt-10 sm:flex-row sm:items-start sm:gap-6 sm:px-10 sm:pt-12">
+            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full ring-4 ring-white sm:h-28 sm:w-28">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="text-center sm:text-left">
+              <div className="mb-1 flex items-center justify-center gap-1.5 sm:justify-start">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#075874]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#075874]">
+                  {member.role}
+                </span>
+              </div>
+              <h2 className="text-2xl font-bold tracking-tight text-[#171717] sm:text-3xl">
+                {member.name}
+              </h2>
+              {member.tagline && (
+                <p className="mt-2 max-w-md text-sm leading-relaxed text-[#171717]/60">
+                  {member.tagline}
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Body */}
+          <div className="grid gap-6 px-6 py-8 sm:px-10">
+            {member.education && member.education.length > 0 && (
+              <ModalBlock title="Education">
+                <ul className="space-y-2">
+                  {member.education.map((e, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-2 text-sm leading-relaxed text-[#171717]/70"
+                    >
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#075874]" />
+                      {e}
+                    </li>
+                  ))}
+                </ul>
+              </ModalBlock>
+            )}
+
+            {member.expertise && member.expertise.length > 0 && (
+              <ModalBlock title="Expertise">
+                <div className="flex flex-wrap gap-2">
+                  {member.expertise.map((e, i) => (
+                    <span
+                      key={i}
+                      className="rounded-full bg-[#075874]/10 px-3 py-1 text-xs font-medium text-[#075874]"
+                    >
+                      {e}
+                    </span>
+                  ))}
+                </div>
+              </ModalBlock>
+            )}
+
+            {member.experience && member.experience.length > 0 && (
+              <ModalBlock title="Experience">
+                <div className="space-y-3">
+                  {member.experience.map((x, i) => (
+                    <div
+                      key={i}
+                      className="border-l-2 border-[#075874]/20 pl-3"
+                    >
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#075874]">
+                        {x.period}
+                      </p>
+                      <p className="text-sm font-semibold text-[#171717]">
+                        {x.title}
+                      </p>
+                      <p className="text-xs text-[#171717]/60">{x.place}</p>
+                      {x.detail && (
+                        <p className="mt-1 text-xs text-[#171717]/60">
+                          {x.detail}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </ModalBlock>
+            )}
+
+            {member.courses && member.courses.length > 0 && (
+              <ModalBlock title="Professional Courses">
+                <ul className="space-y-1.5">
+                  {member.courses.map((c, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-2 text-sm leading-relaxed text-[#171717]/70"
+                    >
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#075874]" />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </ModalBlock>
+            )}
+
+            {member.highlights && member.highlights.length > 0 && (
+              <ModalBlock title="Highlights">
+                <ul className="space-y-1.5">
+                  {member.highlights.map((h, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-2 text-sm leading-relaxed text-[#171717]/70"
+                    >
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#075874]" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </ModalBlock>
+            )}
+
+            {member.languages && member.languages.length > 0 && (
+              <ModalBlock title="Languages">
+                <div className="flex flex-wrap gap-2">
+                  {member.languages.map((l, i) => (
+                    <span
+                      key={i}
+                      className="rounded-full border border-[#171717]/10 px-3 py-1 text-xs text-[#171717]/70"
+                    >
+                      {l}
+                    </span>
+                  ))}
+                </div>
+              </ModalBlock>
+            )}
+
+            {member.contact && (
+              <ModalBlock title="Contact">
+                <div className="flex flex-col gap-2">
+                  {member.contact.phone && (
+                    <a
+                      href={`tel:${member.contact.phone.replace(/\s/g, "")}`}
+                      className="flex items-center gap-2 text-sm text-[#171717]/70 transition-colors hover:text-[#075874]"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                      </svg>
+                      {member.contact.phone}
+                    </a>
+                  )}
+                  {member.contact.email && (
+                    <a
+                      href={`mailto:${member.contact.email}`}
+                      className="flex items-center gap-2 break-all text-sm text-[#171717]/70 transition-colors hover:text-[#075874]"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-10 6L2 7" />
+                      </svg>
+                      {member.contact.email}
+                    </a>
+                  )}
+                </div>
+              </ModalBlock>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -334,8 +817,9 @@ export default function HomeAnimation() {
 
     return () => ctx.revert();
   }, []);
-
+const [activeMember, setActiveMember] = useState<TeamMember | null>(null);
   return (
+    
     <main className="relative w-full bg-[#171717]">
       {/* ALL SECTIONS INCLUDING HERO ARE IN THE STACK */}
       <div className="parallax-stack relative z-10">
@@ -687,7 +1171,7 @@ export default function HomeAnimation() {
         >
           <div className="parallax-inner px-4 py-16 sm:px-6 md:px-12 md:py-20 lg:px-20">
             <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center gap-10 md:flex-row md:gap-0">
-              <ClinicCarousel/>
+              <ClinicCarousel />
               <div className="hidden flex-1 items-center px-5 md:flex md:px-8">
                 <div className="h-px flex-1 bg-white/20" />
                 <span className="mx-4 text-2xl md:text-3xl">✦</span>
@@ -701,7 +1185,138 @@ export default function HomeAnimation() {
             </div>
           </div>
         </section>
-        
+
+        {/* Section — Our Team */}
+        <section
+          id="team"
+          data-cta-theme="light"
+          data-nav-active="dark"
+          className="parallax-panel panel-team relative md:sticky h-auto min-h-[100svh] md:min-h-[100svh] overflow-visible bg-[#f8f9fa]"
+        >
+          <div className="parallax-inner px-4 py-14 sm:px-6 sm:py-16 md:px-12 md:py-20 lg:px-20">
+            <div className="relative z-10 mx-auto max-w-[1300px]">
+              {/* HEADER ROW */}
+              <div className="mb-10 flex flex-col gap-5 sm:mb-12 md:flex-row md:items-end md:justify-between md:gap-8">
+                <div>
+                  <div className="inline-flex items-end">
+                    <ScrollWipeText
+                      className="text-4xl font-bold tracking-tight mt-5 text-[#171717] sm:text-5xl md:text-6xl lg:text-7xl"
+                      text="Our team"
+                      revealColor="#171717"
+                      hiddenColor="#e5e5e5"
+                      stagger={0}
+                      start="top 85%"
+                      end="bottom 50%"
+                    />
+                    <span className="text-4xl font-bold tracking-tight text-[#075874] sm:text-5xl md:text-6xl lg:text-7xl">
+                      .
+                    </span>
+                  </div>
+                </div>
+
+                {/* Right side: horizontal rule + arrow */}
+                <div className="flex w-full items-center gap-4 md:w-auto md:max-w-sm">
+                  <div className="h-px flex-1 bg-[#171717]/15" />
+                  <span className="text-lg text-[#075874]">→</span>
+                </div>
+              </div>
+
+              {/* INTRO PARAGRAPH */}
+              <ScrollWipeText
+                className="mb-10 max-w-xl text-sm leading-relaxed text-[#171717]/60 sm:mb-12 md:text-base"
+                text="We're led by a team who constantly questions, tinkers, and challenges to unlock great creativity around every turn — and every smile."
+                revealColor="#171717"
+                hiddenColor="#e5e5e5"
+                stagger={0}
+                start="top 88%"
+                end="bottom 65%"
+              />
+
+              {/* TEAM GRID — 2 cols mobile, 4 cols desktop */}
+              <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:gap-x-7 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-10">
+                {TEAM.map((member, i) => (
+                  <div
+  key={i}
+  className="group flex flex-col items-center cursor-pointer"
+  onClick={() => setActiveMember(member)}
+  role="button"
+  tabIndex={0}
+  onKeyDown={(e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setActiveMember(member);
+    }
+  }}
+>
+                    {/* CIRCULAR PORTRAIT WITH ARROW BUTTON */}
+                    <div className="relative mb-3 aspect-square w-full max-w-[140px] sm:max-w-[170px] lg:max-w-[200px]">
+                      <div className="relative h-full w-full overflow-hidden rounded-full bg-[#e5e5e5] ring-1 ring-[#171717]/5">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="h-full w-full object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-105"
+                        />
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                      </div>
+                      
+                      {/* Arrow button — opens profile modal */}
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+    setActiveMember(member);
+  }}
+  aria-label={`View ${member.name}'s profile`}
+  className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#075874] shadow-[0_3px_12px_rgba(0,0,0,0.12)] ring-1 ring-[#171717]/5 transition-all duration-300 hover:bg-[#075874] hover:text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#075874] focus:ring-offset-2 sm:h-8 sm:w-8"
+>
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+</button>
+                    </div>
+
+                    {/* NAME + ROLE */}
+                    <div className="w-full text-center">
+                      <div className="mb-0.5 flex items-center justify-center gap-1.5">
+                        <span className="h-1 w-1 rounded-full bg-[#075874]" />
+                        <ScrollWipeText
+                          className="text-xs font-semibold tracking-tight text-[#171717] sm:text-sm"
+                          text={member.name}
+                          revealColor="#171717"
+                          hiddenColor="#dcdcdc"
+                          stagger={0}
+                          start="top 92%"
+                          end="bottom 92%"
+                        />
+                      </div>
+                      <ScrollWipeText
+                        className="text-[11px] leading-snug text-[#171717]/55 sm:text-xs"
+                        text={member.role}
+                        revealColor="#171717"
+                        hiddenColor="#e5e5e5"
+                        stagger={0}
+                        start="top 92%"
+                        end="bottom 96%"
+                      />
+                      {/* BIO — desktop hover only */}
+                      <p className="mt-1.5 hidden text-[11px] leading-snug text-[#171717]/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block">
+                        {member.bio}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Section 03 — Our Services */}
         <section
@@ -1039,7 +1654,6 @@ export default function HomeAnimation() {
         className="relative z-50 w-full bg-white px-4 py-12 text-[#171717] sm:px-6 sm:py-16 md:px-12 lg:px-20"
       >
         <div className="mx-auto max-w-[1400px]">
-
           {/* MAIN FOOTER GRID */}
           <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12 lg:gap-8">
             {/* BRAND BLOCK */}
@@ -1390,6 +2004,7 @@ export default function HomeAnimation() {
           </div>
         </div>
       </footer>
+      <TeamModal member={activeMember} onClose={() => setActiveMember(null)} />
     </main>
   );
 }
